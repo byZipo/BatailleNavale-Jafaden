@@ -33,4 +33,9 @@ public class ModeGrilleInter extends ModeGrille {
 		return "Mode Inter pgm";
 	}
 
+	@Override
+	public int getNbVaisseau() {
+		return 6;
+	}
+
 }

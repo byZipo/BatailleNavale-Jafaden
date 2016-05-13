@@ -19,6 +19,8 @@ public abstract class ModeGrille {
 	 */
 	public abstract int getTailleMaxVaisseau();
 	
+	public abstract int getNbVaisseau();
+	
 	public static ModeGrille getInstance(Mode m){
 		ModeGrille rep = null;
 		switch(m){
@@ -35,5 +37,10 @@ public abstract class ModeGrille {
 	public static String[] getModes() {
 		String[] rep = {"Intermediaire", "Simple"};
 		return rep;
+	}
+	
+	public static String[] getBateauxAPlacer(){
+		return null;
+		
 	}
 }

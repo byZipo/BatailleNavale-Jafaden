@@ -13,6 +13,5 @@ public class EcouteurChangementEpoque implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		JComboBox jcEpoque = (JComboBox<String>)arg0.getSource();
 		BatailleNavale.getInstance().setEpoque(jcEpoque.getSelectedIndex());
-		System.out.println(BatailleNavale.getInstance().getEpoque());
 	}
 }

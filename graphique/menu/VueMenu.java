@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 
 import controlleur.menu.EcouteurChangementEpoque;
 import controlleur.menu.EcouteurChangementMode;
+import controlleur.menu.EcouteurDemarrer;
 import modele.BatailleNavale;
 import modele.epoque.EpoqueFactory;
 import modele.mode.ModeGrille;
@@ -38,6 +39,7 @@ public class VueMenu extends JFrame implements Vue{
 		listeMode = new JComboBox<>(ModeGrille.getModes());
 		listeEpoque = new JComboBox<>(EpoqueFactory.getEpoques());
 		
+		boutonDemarer.addActionListener(new EcouteurDemarrer());
 		listeMode.addActionListener(new EcouteurChangementMode());
 		listeEpoque.addActionListener(new EcouteurChangementEpoque());
 		

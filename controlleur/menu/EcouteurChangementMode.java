@@ -13,6 +13,5 @@ public class EcouteurChangementMode implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		JComboBox jcMode = (JComboBox<String>)arg0.getSource();
 		BatailleNavale.getInstance().setModeGrille(jcMode.getSelectedIndex());
-		System.out.println(BatailleNavale.getInstance().getModeGrille());
 	}
 }

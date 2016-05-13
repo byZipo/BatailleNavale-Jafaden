@@ -30,5 +30,10 @@ public class ModeGrilleSimple extends ModeGrille {
 		return "Mode Simple pgm";
 	}
 
+	@Override
+	public int getNbVaisseau() {
+		return 6;
+	}
+
 
 }
