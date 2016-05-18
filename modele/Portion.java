@@ -3,12 +3,16 @@ package modele;
 public class Portion {
 	private int x;
 	private int y;
-	private boolean touche;
+	private int idPortion;
+	private int pdv;
+	private final int maxPdv;
 	
-	public Portion(int x, int y){
+	public Portion(int x, int y, int id, int pdv){
 		this.x = x;
 		this.y=y;
-		touche = false;
+		this.idPortion = id;
+		this.pdv = pdv;
+		maxPdv = pdv;
 	}
 	
 	public int getX() {
@@ -28,11 +32,19 @@ public class Portion {
 	}
 
 	public boolean isTouche() {
-		return touche;
+		return pdv < maxPdv && !isCoule();
 	}
 	
-	public void setTouche(){
-		touche = true;
+	public boolean isCoule(){
+		return pdv == 0;
+	}
+	
+	public void toucher(){
+		pdv--;
+	}
+
+	public int getId() {
+		return idPortion;
 	}
 
 }

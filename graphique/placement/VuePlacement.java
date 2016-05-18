@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import modele.BatailleNavale;
+import modele.BatailleNavale.Etat;
 
 public class VuePlacement extends JFrame implements Vue{
 	
@@ -33,8 +34,7 @@ public class VuePlacement extends JFrame implements Vue{
 	}
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+		this.setVisible(BatailleNavale.getInstance().getEtat()==Etat.PLACEMENT);
 	}
 
 }

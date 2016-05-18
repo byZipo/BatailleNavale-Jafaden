@@ -27,16 +27,16 @@ public class Bateau {
 		for (int i = 0; i < taille; i++) {
 			switch(direction){
 				case B :
-					alPortion.add(new Portion(x, y+i));
+					alPortion.add(new Portion(x, y+i, i, BatailleNavale.getInstance().getEpoque().getPuissance().getPuissance(taille)));
 					break;
 				case H :
-					alPortion.add(new Portion(x, y-i));
+					alPortion.add(new Portion(x, y-i, i, BatailleNavale.getInstance().getEpoque().getPuissance().getPuissance(taille)));
 					break;
 				case D :
-					alPortion.add(new Portion(x+i, y));
+					alPortion.add(new Portion(x+i, y, i, BatailleNavale.getInstance().getEpoque().getPuissance().getPuissance(taille)));
 					break;
 				case G :
-					alPortion.add(new Portion(x-i, y));
+					alPortion.add(new Portion(x-i, y, i, BatailleNavale.getInstance().getEpoque().getPuissance().getPuissance(taille)));
 					break;
 			}
 		}

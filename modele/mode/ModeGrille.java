@@ -3,8 +3,9 @@ package modele.mode;
 public abstract class ModeGrille {
 	private static ModeGrille instanceModeInter = new ModeGrilleInter();
 	private static ModeGrille instanceModeSimple = new ModeGrilleSimple();
+	private static ModeGrille instanceModeTest = new ModeGrilleTest();
 	
-	public enum Mode {INTER, SIMPLE};
+	public enum Mode {TEST, INTER, SIMPLE};
 	
 	/**
 	 * Renvoi le nombre de vaisseau de la taille passer en parametre pour ce mode
@@ -24,6 +25,9 @@ public abstract class ModeGrille {
 	public static ModeGrille getInstance(Mode m){
 		ModeGrille rep = null;
 		switch(m){
+			case TEST : 
+				rep = instanceModeTest;
+				break;
 			case INTER : 
 				rep = instanceModeInter;
 				break;
@@ -35,12 +39,8 @@ public abstract class ModeGrille {
 	}
 
 	public static String[] getModes() {
-		String[] rep = {"Intermediaire", "Simple"};
-		return rep;
-	}
-	
-	public static String[] getBateauxAPlacer(){
-		return null;
+		String[] rep = {"Test", "Intermediaire", "Simple"};
 		
+		return rep;
 	}
 }

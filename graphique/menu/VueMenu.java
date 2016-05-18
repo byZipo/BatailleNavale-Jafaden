@@ -16,10 +16,13 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
+import controlleur.menu.EcouteurChangementAlgo;
 import controlleur.menu.EcouteurChangementEpoque;
 import controlleur.menu.EcouteurChangementMode;
 import controlleur.menu.EcouteurDemarrer;
 import modele.BatailleNavale;
+import modele.BatailleNavale.Etat;
+import modele.algo.Algo;
 import modele.epoque.EpoqueFactory;
 import modele.mode.ModeGrille;
 
@@ -28,6 +31,7 @@ public class VueMenu extends JFrame implements Vue{
 	private JButton boutonDemarer;
 	private JComboBox listeEpoque;
 	private JComboBox listeMode;
+	private JComboBox listeAlgo;
 	
 	public VueMenu(){
 		super("CAD - Bataille Navale");
@@ -38,13 +42,16 @@ public class VueMenu extends JFrame implements Vue{
 		boutonDemarer = new JButton("Demarer");
 		listeMode = new JComboBox<>(ModeGrille.getModes());
 		listeEpoque = new JComboBox<>(EpoqueFactory.getEpoques());
+		listeAlgo = new JComboBox<>(Algo.getAlgos());
 		
 		boutonDemarer.addActionListener(new EcouteurDemarrer());
 		listeMode.addActionListener(new EcouteurChangementMode());
 		listeEpoque.addActionListener(new EcouteurChangementEpoque());
+		listeAlgo.addActionListener(new EcouteurChangementAlgo());
 		
 		add(listeMode);
 		add(listeEpoque);
+		add(listeAlgo);
 		add(boutonDemarer);
 		
 	    pack() ;
@@ -53,8 +60,7 @@ public class VueMenu extends JFrame implements Vue{
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+		this.setVisible(BatailleNavale.getInstance().getEtat()==Etat.PARAM);
 	}
 
 }

@@ -1,15 +1,14 @@
 package modele.epoque.xixsiecle;
 
+import java.awt.Image;
+
 import javax.swing.ImageIcon;
 
+import modele.Bateau.Direction;
 import modele.epoque.Presentation;
+import modele.epoque.Presentation.Type;
 
 public class PresentationXIXSiecle extends Presentation {
-	@Override
-	public ImageIcon getPresentation(int taille) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	public String getNom(int taille) {
@@ -31,6 +30,12 @@ public class PresentationXIXSiecle extends Presentation {
 				rep = "OMG";
 				break;
 		}
-		return rep+" "+taille;
+		return rep+" : "+taille;
+	}
+
+	@Override
+	public Image getPresentation(Type t, int taille, Direction dir, int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

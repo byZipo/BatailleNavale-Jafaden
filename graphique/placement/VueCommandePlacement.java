@@ -19,6 +19,7 @@ import controlleur.placement.EcouteurDirection;
 import controlleur.placement.EcouteurSens;
 import controlleur.placement.EcouteurValider;
 import modele.BatailleNavale;
+import modele.BatailleNavale.Etat;
 import modele.Bateau;
 import modele.Bateau.Direction;
 import modele.Bateau.Sens;
@@ -35,6 +36,7 @@ public class VueCommandePlacement extends JPanel implements Vue {
 	private JComboBox listeBateau;
 	
 	public VueCommandePlacement() {
+		BatailleNavale.getInstance().addObserver(this);
 		btHaut = new JButton("^");
 		btHaut.addActionListener(new EcouteurDirection(Direction.H));
 		btBas = new JButton("v");
@@ -90,11 +92,15 @@ public class VueCommandePlacement extends JPanel implements Vue {
 	
 	@Override
 	public void update(Observable o, Object arg) {
-		BatailleNavale b = BatailleNavale.getInstance();
-		btHaut.setEnabled(b.peutEtreDeplacer(Direction.H));
-		btBas.setEnabled(b.peutEtreDeplacer(Direction.B));
-		btDroite.setEnabled(b.peutEtreDeplacer(Direction.D));
-		btGauche.setEnabled(b.peutEtreDeplacer(Direction.G));
+		if(BatailleNavale.getInstance().getEtat()==Etat.PLACEMENT){
+			BatailleNavale b = BatailleNavale.getInstance();
+			btHaut.setEnabled(b.peutEtreDeplacer(Direction.H));
+			btBas.setEnabled(b.peutEtreDeplacer(Direction.B));
+			btDroite.setEnabled(b.peutEtreDeplacer(Direction.D));
+			btGauche.setEnabled(b.peutEtreDeplacer(Direction.G));
+			btRotationAntiHoraire.setEnabled(b.peutEtreTourner(Sens.ANTIHORAIRE));
+			btRotationHoraire.setEnabled(b.peutEtreTourner(Sens.HORAIRE));
+		}
 //		listeBateau.addActionListener();
 	}
 

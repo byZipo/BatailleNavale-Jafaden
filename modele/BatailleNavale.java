@@ -8,6 +8,8 @@ import javax.swing.DefaultComboBoxModel;
 
 import modele.Bateau.Direction;
 import modele.Bateau.Sens;
+import modele.algo.Algo;
+import modele.algo.Algo.Algorithme;
 import modele.epoque.EpoqueFactory;
 import modele.epoque.EpoqueFactory.Epoque;
 import modele.mode.ModeGrille;
@@ -21,6 +23,9 @@ public class BatailleNavale extends Observable{
 	private Joueur joueur;
 	private Joueur ordinateur;
 	private ModeGrille modeGrille;
+	private Algo algo;
+	
+	public static final int TAILLE_PLATEAU = 10; 
 
 	private EpoqueFactory epoque;
 //	private BatailleNavaleDAO daoBatailleNavale;
@@ -32,6 +37,7 @@ public class BatailleNavale extends Observable{
 	private BatailleNavale(){
 		setEpoque(0);
 		setModeGrille(0);
+		setAlgo(0);
 		bateauxAPlacer = new DefaultComboBoxModel<Bateau>();
 		joueur = new Joueur();
 	}
@@ -80,6 +86,20 @@ public class BatailleNavale extends Observable{
 	}
 	
 	
+	public Algo getAlgo() {
+		return algo;
+	}
+
+	public void setAlgo(Algo a) {
+		algo = a;
+		miseAJour();
+	}
+	
+	public void setAlgo(int selectedIndex) {
+		algo = Algo.getInstance(Algo.Algorithme.values()[selectedIndex]);
+		miseAJour();
+	}
+	
 	public EpoqueFactory getEpoque() {
 		return epoque;
 	}
@@ -99,11 +119,19 @@ public class BatailleNavale extends Observable{
 //		bateauxAPlacer = new ComboBoxBateauxModel();
 		for (int i = 1; i <= modeGrille.getTailleMaxVaisseau(); i++) {
 			for (int j = 0; j < modeGrille.getVaisseaux(i); j++) {
-				bateauxAPlacer.addElement(new Bateau(Direction.H, i, 7, 7));
+				bateauxAPlacer.addElement(new Bateau(Direction.H, i, TAILLE_PLATEAU/2, TAILLE_PLATEAU/2));
 			}
 		}
 		bateauAPlacer = (Bateau) bateauxAPlacer.getSelectedItem();
 		miseAJour();
+	}
+	
+	public Joueur getJoueur(){
+		return joueur;
+	}
+	
+	public Joueur getOrdinateur(){
+		return ordinateur;
 	}
 
 	public ArrayList<Bateau> getBateauJoueur(){
@@ -126,32 +154,32 @@ public class BatailleNavale extends Observable{
 			case HORAIRE : 
 				switch(bateauAPlacer.getDirection()){
 					case H : 
-						rep = bateauAPlacer.getxDepart()+(bateauAPlacer.getTaille()-1)<15;
+						rep = bateauAPlacer.getxDepart()+(bateauAPlacer.getTaille()-1)<TAILLE_PLATEAU;
 						break;
 					case B : 
-						rep = bateauAPlacer.getxDepart()-(bateauAPlacer.getTaille()-1)>0;
+						rep = bateauAPlacer.getxDepart()-(bateauAPlacer.getTaille()-2)>0;
 						break;
 					case D : 
-						rep = bateauAPlacer.getyDepart()+(bateauAPlacer.getTaille()-1)<15;
+						rep = bateauAPlacer.getyDepart()+(bateauAPlacer.getTaille()-1)<TAILLE_PLATEAU;
 						break;
 					case G : 
-						rep = bateauAPlacer.getyDepart()-(bateauAPlacer.getTaille()-1)>0;
+						rep = bateauAPlacer.getyDepart()-(bateauAPlacer.getTaille()-2)>0;
 						break;
 				}
 				break;
 			case ANTIHORAIRE :
 				switch(bateauAPlacer.getDirection()){
 				case H : 
-					rep = bateauAPlacer.getxDepart()-(bateauAPlacer.getTaille()-1)>0;
+					rep = bateauAPlacer.getxDepart()-(bateauAPlacer.getTaille()-2)>0;
 					break;
 				case B : 
-					rep = bateauAPlacer.getxDepart()+(bateauAPlacer.getTaille()-1)<15;
+					rep = bateauAPlacer.getxDepart()+(bateauAPlacer.getTaille()-1)<TAILLE_PLATEAU;
 					break;
 				case D : 
-					rep = bateauAPlacer.getyDepart()-(bateauAPlacer.getTaille()-1)>0;
+					rep = bateauAPlacer.getyDepart()-(bateauAPlacer.getTaille()-2)>0;
 					break;
 				case G : 
-					rep = bateauAPlacer.getyDepart()+(bateauAPlacer.getTaille()-1)<15;
+					rep = bateauAPlacer.getyDepart()+(bateauAPlacer.getTaille()-1)<TAILLE_PLATEAU;
 					break;
 			}
 				break;
@@ -171,16 +199,16 @@ public class BatailleNavale extends Observable{
 			break;
 		case B:
 			if(bateauAPlacer.getDirection()==Direction.B){
-				rep = bateauAPlacer.getyDepart()+(bateauAPlacer.getTaille()-1)<15-1;
+				rep = bateauAPlacer.getyDepart()+(bateauAPlacer.getTaille()-1)<TAILLE_PLATEAU-1;
 			}else{
-				rep = bateauAPlacer.getyDepart()<15-1;
+				rep = bateauAPlacer.getyDepart()<TAILLE_PLATEAU-1;
 			}
 			break;
 		case D:
-			if(bateauAPlacer.getDirection()==Direction.B){
-				rep = bateauAPlacer.getxDepart()+(bateauAPlacer.getTaille()-1)<15-1;
+			if(bateauAPlacer.getDirection()==Direction.D){
+				rep = bateauAPlacer.getxDepart()+(bateauAPlacer.getTaille()-1)<TAILLE_PLATEAU-1;
 			}else{
-				rep = bateauAPlacer.getxDepart()<15-1;
+				rep = bateauAPlacer.getxDepart()<TAILLE_PLATEAU-1;
 			}
 			break;
 		case G:
@@ -196,12 +224,19 @@ public class BatailleNavale extends Observable{
 		}
 		return rep;
 	}
+	
+	private void initialiserOrdinateur(){
+		
+	}
 
 	public void validerBateauAPlacer() {
 		joueur.ajouterBateau(bateauAPlacer);
 		bateauxAPlacer.removeElement(bateauAPlacer);
 		if(bateauxAPlacer.getSize()==0){//fini on passe a la suite
 			bateauAPlacer = null;
+			etat = Etat.JEU;
+			System.out.println(etat);
+			initialiserOrdinateur();
 		}else{
 			bateauAPlacer = (Bateau) bateauxAPlacer.getSelectedItem();
 		}
@@ -215,6 +250,10 @@ public class BatailleNavale extends Observable{
 
 	public void updateBateauAPlacer() {
 		bateauAPlacer = (Bateau) bateauxAPlacer.getSelectedItem();
-		miseAJour();
+		try{
+			miseAJour();
+		}catch(Exception e){
+			
+		}
 	}
 }

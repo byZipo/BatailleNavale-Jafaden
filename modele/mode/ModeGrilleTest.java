@@ -1,6 +1,6 @@
 package modele.mode;
 
-public class ModeGrilleInter extends ModeGrille {
+public class ModeGrilleTest extends ModeGrille {
 
 	@Override
 	public int getVaisseaux(int taille) {
@@ -8,15 +8,12 @@ public class ModeGrilleInter extends ModeGrille {
 		if(taille<=getTailleMaxVaisseau()){
 			switch(taille){
 				case 1 :
-					rep = 1;
+					rep = 0;
 					break;
 				case 2 :
-					rep = 3;
+					rep = 0;
 					break;
 				case 3 :
-					rep = 2;
-					break;
-				case 4 :
 					rep = 1;
 					break;
 			}
@@ -26,16 +23,16 @@ public class ModeGrilleInter extends ModeGrille {
 
 	@Override
 	public int getTailleMaxVaisseau() {
-		return 4;
+		return 3;
 	}
 	
 	public String toString(){
-		return "Mode Inter pgm";
+		return "Mode Test";
 	}
 
 	@Override
 	public int getNbVaisseau() {
-		return 6;
+		return 1;
 	}
 
 }
