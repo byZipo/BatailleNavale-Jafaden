@@ -1,7 +1,11 @@
 package modele.epoque.xixsiecle;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import modele.Bateau.Direction;
@@ -35,7 +39,11 @@ public class PresentationXIXSiecle extends Presentation {
 
 	@Override
 	public Image getPresentation(Type t, int taille, Direction dir, int id) {
-		// TODO Auto-generated method stub
-		return null;
+		BufferedImage img = null;
+		try {
+		    img = ImageIO.read(new File(PATH_TO_IMG+"XIX/"+t+"/"+dir+"/"+taille+"-"+id+".png"));
+		} catch (IOException e) {
+		}
+		return img;
 	}
 }
