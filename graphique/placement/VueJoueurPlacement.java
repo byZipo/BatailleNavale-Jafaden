@@ -28,17 +28,11 @@ import modele.epoque.Presentation;
 import modele.epoque.Presentation.Type;
 
 public class VueJoueurPlacement extends JPanel implements Vue {
-	public static Image IMAGE_WATER;
 	//[hauteur][largeur] graphiquement 
 	private PanelPortion[][] tabPanel;
 	
 	public VueJoueurPlacement() {
 		BatailleNavale.getInstance().addObserver(this);
-		BufferedImage img = null;
-		try {
-			IMAGE_WATER = ImageIO.read(new File(Presentation.PATH_TO_IMG+"water.png"));
-		} catch (IOException e) {
-		}
 		tabPanel = new PanelPortion[BatailleNavale.TAILLE_PLATEAU][BatailleNavale.TAILLE_PLATEAU];
 		this.setLayout(new GridLayout(BatailleNavale.TAILLE_PLATEAU, BatailleNavale.TAILLE_PLATEAU));
 		for (int i = 0; i < BatailleNavale.TAILLE_PLATEAU; i++) {

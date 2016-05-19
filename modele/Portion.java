@@ -40,11 +40,16 @@ public class Portion {
 	}
 	
 	public void toucher(){
-		pdv--;
+		if(!isCoule())
+			pdv--;
 	}
 
 	public int getId() {
 		return idPortion;
+	}
+	
+	public String toString(){
+		return "pdv : "+pdv+" x : "+x+" y : "+y+" idPortion : "+idPortion;
 	}
 
 }

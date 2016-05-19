@@ -153,7 +153,6 @@ public class Bateau {
 						}
 						break;
 				}
-				System.out.println(portion.getX()+" "+portion.getY());
 			}
 			i++;
 		}

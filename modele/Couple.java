@@ -28,4 +28,8 @@ public class Couple<T,S> {
 		}
 		return rep;
 	}
+	
+	public String toString(){
+		return premier+" "+deuxieme;
+	}
 }

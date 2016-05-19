@@ -4,13 +4,17 @@ import java.util.ArrayList;
 
 public class Joueur {
 	private ArrayList<Bateau> alBateaux;
-	private ArrayList<Couple<Integer,Integer>> alPositionConnu;
-	private ArrayList<Couple<Integer,Integer>> alPositionCouler;
+	public enum Type {CACHE,TOUCHE,COULER,VISIBLE}
+	private Type[][] positionsAdverse;
 	
 	public Joueur(){
 		alBateaux = new ArrayList<Bateau>();
-		alPositionConnu = new ArrayList<Couple<Integer,Integer>>();
-		alPositionCouler = new ArrayList<Couple<Integer,Integer>>();
+		positionsAdverse = new Type[BatailleNavale.TAILLE_PLATEAU][BatailleNavale.TAILLE_PLATEAU];
+		for (int i = 0; i < positionsAdverse.length; i++) {
+			for (int j = 0; j < positionsAdverse[i].length; j++) {
+				positionsAdverse[i][j] = Type.CACHE;
+			}
+		}
 	}
 	
 	public void ajouterBateau(Bateau b){
@@ -33,12 +37,16 @@ public class Joueur {
 		return alBateaux;
 	}
 	
-	public ArrayList<Couple<Integer,Integer>> getPositionConnus(){
-		return alPositionConnu;
+	public void setPosition(int x, int y, Type t){
+		positionsAdverse[x][y] = t;
 	}
 	
-	public ArrayList<Couple<Integer,Integer>> getPositionCouler(){
-		return alPositionCouler;
+	public Type[][] getPositionsAdverse(){
+		return positionsAdverse;
 	}
 	
+	public int getNbToucher(){
+		int rep = 0;
+		return 0;
+	}
 }
