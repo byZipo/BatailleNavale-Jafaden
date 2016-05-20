@@ -1,12 +1,14 @@
 package modele.epoque;
 
+import java.io.Serializable;
+
 import modele.epoque.xixsiecle.XIXFactory;
 import modele.epoque.xxsiecle.XXFactory;
 import modele.mode.ModeGrille;
 import modele.mode.ModeGrille.Mode;
 
 
-public abstract class EpoqueFactory {
+public abstract class EpoqueFactory implements Serializable{
 
 	private static EpoqueFactory instanceEpoqueXX = new XXFactory();
 	private static EpoqueFactory instanceEpoqueXIX = new XIXFactory();

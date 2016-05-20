@@ -1,9 +1,11 @@
 package modele.algo;
 
+import java.io.Serializable;
+
 import modele.Couple;
 import modele.Joueur;
 
-public abstract class Algo {
+public abstract class Algo implements Serializable{
 	private static Algo instanceAlgoRandom = new AlgoRandom();
 	
 	public enum Algorithme {RANDOM};

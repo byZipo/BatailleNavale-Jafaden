@@ -1,6 +1,8 @@
 package modele.mode;
 
-public abstract class ModeGrille {
+import java.io.Serializable;
+
+public abstract class ModeGrille implements Serializable{
 	private static ModeGrille instanceModeInter = new ModeGrilleInter();
 	private static ModeGrille instanceModeSimple = new ModeGrilleSimple();
 	private static ModeGrille instanceModeTest = new ModeGrilleTest();

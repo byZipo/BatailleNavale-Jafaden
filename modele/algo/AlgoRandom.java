@@ -29,7 +29,6 @@ public class AlgoRandom extends Algo {
 			int y = 0;
 			while(!trouve && y < ordinateur.getPositionsAdverse()[x].length){
 				Type toto = ordinateur.getPositionsAdverse()[x][y];
-				System.out.println(toto);
 				if(toto == Type.TOUCHE){
 					rep = new Couple<Integer, Integer>(x, y);
 					trouve = true;
@@ -45,20 +44,10 @@ public class AlgoRandom extends Algo {
 				int y = r.nextInt(BatailleNavale.TAILLE_PLATEAU);
 				rep = new Couple<Integer, Integer>(x, y);
 				bon = ordinateur.getPositionsAdverse()[x][y] == Type.CACHE;
-//				bon = !ordinateur.getPositionCouler().contains(rep);
 			}
 		}else{
 			
 		}
 		return rep;
-//		boolean bon = false;
-//		while(!bon){
-//			int x = r.nextInt(BatailleNavale.TAILLE_PLATEAU);
-//			int y = r.nextInt(BatailleNavale.TAILLE_PLATEAU);
-//			rep = new Couple<Integer, Integer>(x, y);
-//			bon = ordinateur.getPositionsAdverse()[x][y] == 
-//			bon = !ordinateur.getPositionCouler().contains(rep);
-//		}
-//		return rep;
 	}
 }

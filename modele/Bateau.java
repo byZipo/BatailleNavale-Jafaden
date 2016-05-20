@@ -1,12 +1,13 @@
 package modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import modele.Bateau.Direction;
 import modele.Bateau.Sens;
 
-public class Bateau {
+public class Bateau implements Serializable{
 	
 	private ArrayList<Portion> alPortion;
 	private int taille;

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Observable;
 
+import graphique.MenuBar;
 import graphique.Vue;
 
 import javax.swing.BoxLayout;
@@ -38,7 +39,8 @@ public class VueMenu extends JFrame implements Vue{
 		BatailleNavale.getInstance().addObserver(this);
 		this.setPreferredSize(new Dimension(500, 500));
 		this.setLayout(new FlowLayout());
-		
+
+		this.setJMenuBar(new MenuBar());
 		boutonDemarer = new JButton("Demarer");
 		listeMode = new JComboBox<>(ModeGrille.getModes());
 		listeEpoque = new JComboBox<>(EpoqueFactory.getEpoques());

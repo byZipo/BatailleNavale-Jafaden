@@ -1,6 +1,8 @@
 package modele;
 
-public class Portion {
+import java.io.Serializable;
+
+public class Portion implements Serializable{
 	private int x;
 	private int y;
 	private int idPortion;

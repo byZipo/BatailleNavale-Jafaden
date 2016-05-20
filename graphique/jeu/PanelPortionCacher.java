@@ -53,23 +53,6 @@ public class PanelPortionCacher extends JPanel{
 				
 			}
 		}
-//		
-//		
-//		g.drawImage(VueJeu.IMAGE_FOG, 0, 0, this.getWidth(), this.getHeight(),  null);
-//		if(BatailleNavale.getInstance().getEtat()==Etat.PLACEMENT)
-//			g.drawImage(VueJeu.IMAGE_WATER, 0, 0, this.getWidth(), this.getHeight(),  null);
-//		else if(BatailleNavale.getInstance().getEtat()==Etat.JEU){
-//			if(type Type.)
-//		}
-//			
-//		if(){
-////			System.out.println(type);
-//			if(type == Type.CACHER || type == Type.CACHER_JOUEUR)
-//		}
-//		if(bateau != null){
-//			Image image = BatailleNavale.getInstance().getEpoque().getPresentation().getPresentation(type,bateau.getTaille(), bateau.getDirection(), idPortion);
-//			g.drawImage(image, 0, 0, this.getWidth(), this.getHeight(), null);	
-//		}
 	}
 	
 	public void update() {

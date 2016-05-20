@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Observable;
 
+import graphique.MenuBar;
 import graphique.Vue;
 
 import javax.imageio.ImageIO;
@@ -28,6 +29,7 @@ public class VueJeu extends JFrame implements Vue{
 	public VueJeu() {
 		super("CAD - Bataille Navale");
 
+		this.setJMenuBar(new MenuBar());
 		try {
 			IMAGE_WATER = ImageIO.read(new File(Presentation.PATH_TO_IMG+"water.png"));
 			IMAGE_FOG = ImageIO.read(new File(Presentation.PATH_TO_IMG+"fog.png"));
@@ -40,15 +42,6 @@ public class VueJeu extends JFrame implements Vue{
 		VueJeuCacher vueJoueur = new VueJeuCacher();
 		VueJeuVisible vueOrdinateur = new VueJeuVisible();
 		VueInfos vueInfos = new VueInfos();
-		
-		
-		
-		 
-		 
-		
-		 
-		 
-		
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));

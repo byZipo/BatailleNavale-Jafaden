@@ -1,5 +1,7 @@
 package modele.epoque;
 
-public abstract class Puissance {
+import java.io.Serializable;
+
+public abstract class Puissance implements Serializable{
 	public abstract int getPuissance(int taille);
 }

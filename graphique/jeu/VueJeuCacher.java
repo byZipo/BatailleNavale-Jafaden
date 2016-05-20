@@ -61,7 +61,6 @@ public class VueJeuCacher extends JPanel implements Vue {
 						t = Type.TOUCHER;
 					else if(portion.isCoule())
 						t = Type.COULER;
-//					System.out.println(t);
 					tabPanel[portion.getY()][portion.getX()].setType(t);
 					tabPanel[portion.getY()][portion.getX()].setBateau(bateau, portion.getId());
 				}

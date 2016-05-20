@@ -4,11 +4,13 @@ import graphique.Vue;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Observable;
 
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import modele.BatailleNavale;
@@ -32,10 +34,8 @@ public class VueJeuVisible extends JPanel implements Vue {
 			for(int j = 0; j < BatailleNavale.TAILLE_PLATEAU; j++){
 				PanelPortionVisible panel = new PanelPortionVisible(j,i);
 				panel.setBorder(BorderFactory.createLineBorder(Color.black));
-//				JLabel label = new JLabel();
-//				panel.add(label);
-				add(panel);
 				tabPanel[i][j] = panel;
+				add(panel);
 			}
 		}
 	}

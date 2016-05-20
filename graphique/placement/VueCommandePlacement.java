@@ -100,8 +100,8 @@ public class VueCommandePlacement extends JPanel implements Vue {
 			btGauche.setEnabled(b.peutEtreDeplacer(Direction.G));
 			btRotationAntiHoraire.setEnabled(b.peutEtreTourner(Sens.ANTIHORAIRE));
 			btRotationHoraire.setEnabled(b.peutEtreTourner(Sens.HORAIRE));
+			btValider.setEnabled(BatailleNavale.getInstance().bateauAPlacerBienPlacer());
 		}
-//		listeBateau.addActionListener();
 	}
 
 }

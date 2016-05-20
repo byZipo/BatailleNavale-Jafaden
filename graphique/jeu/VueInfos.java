@@ -12,18 +12,17 @@ import modele.BatailleNavale;
 
 public class VueInfos extends JPanel implements Vue {
 
+	private JLabel dernierCoupOrdi;
 	public VueInfos() {
 		BatailleNavale.getInstance().addObserver(this);
-		this.add(new JLabel("info"));
 		this.setPreferredSize(new Dimension(300, 30));
-		
+		dernierCoupOrdi = new JLabel("Dernier Coup : ");
+		add(dernierCoupOrdi);
 	}
 	
 	@Override
 	public void update(Observable o, Object arg) {
-
-		// TODO Auto-generated method stub
-
+		if(BatailleNavale.getInstance().getDernierCoupOrdi()!=null)
+			dernierCoupOrdi.setText("Dernier Coup : "+BatailleNavale.getInstance().getDernierCoupOrdi());
 	}
-
 }

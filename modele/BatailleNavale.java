@@ -1,6 +1,8 @@
 package modele;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 import java.util.Random;
 
@@ -16,7 +18,7 @@ import modele.epoque.EpoqueFactory;
 import modele.epoque.EpoqueFactory.Epoque;
 import modele.mode.ModeGrille;
 
-public class BatailleNavale extends Observable{
+public class BatailleNavale extends Observable implements Serializable{
 
 	private static BatailleNavale instance = new BatailleNavale();
 	private Etat etat = Etat.PARAM;
@@ -28,7 +30,7 @@ public class BatailleNavale extends Observable{
 	private Joueur ordinateur;
 	private ModeGrille modeGrille;
 	private Algo algo;
-	
+	private Couple<Integer,Integer> dernierCoupOrdi;
 	public static final int TAILLE_PLATEAU = 10; 
 
 	private EpoqueFactory epoque;
@@ -348,6 +350,7 @@ public class BatailleNavale extends Observable{
 	
 	public void jouer(){
 		Couple<Integer,Integer> coup = algo.getProchainCoup();
+		dernierCoupOrdi = coup;
 		Portion p = getPortionAt(joueur, coup.getPremier(), coup.getDeuxieme());
 		Type t = Type.VISIBLE;
 		if(p != null){
@@ -362,15 +365,66 @@ public class BatailleNavale extends Observable{
 	
 	public void jouer(int x, int y){
 		Portion p = getPortionAt(ordinateur, x, y);
-//		System.out.println(p.getX()+" "+p.getY());
-//		System.out.println(p);
 		if(p == null){
 			joueur.setPosition(x, y, Type.VISIBLE);
 		}else{
 			joueur.setPosition(x, y, p.isTouche()?Type.TOUCHE:Type.COULER);
 			p.toucher();
+			if(ordinateur.isPerdu())
+				etat = Etat.GAGNER;
 		}
-		jouer();
+		if(etat != Etat.GAGNER){
+			jouer();
+			if(joueur.isPerdu())
+				etat = Etat.PERDU;
+		}
 		miseAJour();
+	}
+
+	public Couple<Integer, Integer> getDernierCoupOrdi() {
+		return dernierCoupOrdi;
+	}
+
+	public boolean bateauAPlacerBienPlacer() {
+		boolean trouve = false;
+		int iPortionBateau=0;
+		while(!trouve && iPortionBateau < bateauAPlacer.getPortions().size()){
+			Portion portion = bateauAPlacer.getPortions().get(iPortionBateau);
+			int iBateau = 0;
+			while(!trouve && iBateau < joueur.getBateaux().size()){
+				Bateau b = joueur.getBateau(iBateau);
+				int iPortion = 0;
+				while(!trouve && iPortion < b.getPortions().size()){
+					Portion p = b.getPortions().get(iPortion);
+					if(portion.getX() == p.getX() && portion.getY() == p.getY()){
+						trouve = true;
+					}
+					iPortion++;
+				}
+				iBateau++;
+			}
+			iPortionBateau++;
+			
+		}
+		return !trouve;
+	}
+
+	public void loadInstance(BatailleNavale b) {
+		instance.copy(b);
+		setChanged();
+		notifyObservers();
+	}
+
+	private void copy(BatailleNavale b) {
+		etat = b.etat;
+		r = b.r;
+		bateauAPlacer = b.bateauAPlacer;
+		joueur = b.joueur;
+		ordinateur = b.ordinateur;
+		modeGrille = b.modeGrille;
+		algo = b.algo;
+		dernierCoupOrdi = b.dernierCoupOrdi;
+		epoque = b.epoque;
+		bateauxAPlacer = b.bateauxAPlacer;
 	}
 }

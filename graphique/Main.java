@@ -6,6 +6,8 @@ import graphique.placement.VuePlacement;
 
 import java.util.Observable;
 
+import javax.swing.JOptionPane;
+
 import modele.BatailleNavale;
 
 public class Main implements Vue{
@@ -21,26 +23,27 @@ public class Main implements Vue{
 		vueMenu = new VueMenu();
 		vuePlacement = new VuePlacement();
 		vueJeu = new VueJeu();
-//		BatailleNavale.getInstance().addObserver(this);
+		BatailleNavale.getInstance().addObserver(this);
 //		BatailleNavale.getInstance().miseAJour();
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
 		switch(BatailleNavale.getInstance().getEtat()){
-			case PARAM :
-				if(!vueMenu.isShowing()){
-					vueMenu.setVisible(true);
-				}
-				vuePlacement.setVisible(false);
+			case GAGNER :
+				JOptionPane.showMessageDialog(vueJeu,
+					    "Vous avez gagner.",
+					    "Bataille Navale",
+					    JOptionPane.PLAIN_MESSAGE);
+				System.exit(0);
 				break;
-			case PLACEMENT :
-				if(!vuePlacement.isShowing()){
-					vuePlacement.setVisible(true);
-				}
-				vueMenu.setVisible(false);
-			default :
-				vueMenu.setVisible(false);
+			case PERDU :
+				JOptionPane.showMessageDialog(vueJeu,
+					    "Vous avez perdu.",
+					    "Bataille Navale",
+					    JOptionPane.PLAIN_MESSAGE);
+				System.exit(0);
+				break;
 		}
 	}
 

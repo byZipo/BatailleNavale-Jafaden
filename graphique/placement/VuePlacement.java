@@ -1,5 +1,6 @@
 package graphique.placement;
 
+import graphique.MenuBar;
 import graphique.Vue;
 
 import java.awt.Dimension;
@@ -20,7 +21,7 @@ public class VuePlacement extends JFrame implements Vue{
 		this.setPreferredSize(new Dimension(500, 500));
 		VueJoueurPlacement vueJoueurPlacement = new VueJoueurPlacement();
 		VueCommandePlacement vueCommandePlacement = new VueCommandePlacement();
-		
+		this.setJMenuBar(new MenuBar());
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		
