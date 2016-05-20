@@ -11,6 +11,11 @@ Il faut ensuite ajouter au PATH le chemin vers ant en écrivant les commandes com
 $> set ANT_HOME=C:\formationant\apache-ant-1.9.7
 $> set PATH=%PATH%;%ANT_HOME%\bin
 
+Pour que les tests soit reconnus, il faut modifier dans le build.xml le chemin vers votre junit.jar et le chemin vers org.hamcrest.core_1.3.0.v201303031735.jar.
+<property name="junit" value="c:/cheminversjunit/junit.jar"/>
+<property name="hamcrest" value="C:/cheminversjunit/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+
+
 ensuite, pour builder : $> ant build
 puis soit pour éxécuter l'application : $> ant run
 	  pour éxécuter les tests : $> ant test
