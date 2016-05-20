@@ -1,0 +1,20 @@
+Marche à suivre pour executer le ant-build :
+
+Tout d'abord s'assurer d'avoir télécharger ant :
+http://ant.apache.org/bindownload.cgi
+
+ensuite télécharger si besoin la jdk :
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+Ensuite placer le build.xml en dehors du dossier src contenant les sources.
+Il faut ensuite ajouter au PATH le chemin vers ant en écrivant les commandes comme suit :
+$> set ANT_HOME=C:\formationant\apache-ant-1.9.7
+$> set PATH=%PATH%;%ANT_HOME%\bin
+
+ensuite, pour builder : $> ant build
+puis soit pour éxécuter l'application : $> ant run
+	  pour éxécuter les tests : $> ant test
+	  pour éxécuter test + application : $> ant run_all
+
+
+
