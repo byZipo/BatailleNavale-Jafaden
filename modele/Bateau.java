@@ -16,14 +16,12 @@ public class Bateau implements Serializable{
 	public enum Direction {H,B,D,G};
 	public enum Sens {HORAIRE,ANTIHORAIRE};
 	private Direction direction;
-	private boolean couler;
 	
 	public Bateau(Direction d, int t, int x, int y){
 		taille = t;
 		xDepart = x;
 		yDepart = y;
 		direction = d;
-		couler = false;
 		alPortion = new ArrayList<Portion>();
 		for (int i = 0; i < taille; i++) {
 			switch(direction){
@@ -73,14 +71,6 @@ public class Bateau implements Serializable{
 
 	public void setDirection(Direction direction) {
 		this.direction = direction;
-	}
-
-	public boolean isCouler() {
-		return couler;
-	}
-
-	public void setCouler(boolean couler) {
-		this.couler = couler;
 	}
 
 	public ArrayList<Portion> getPortions() {

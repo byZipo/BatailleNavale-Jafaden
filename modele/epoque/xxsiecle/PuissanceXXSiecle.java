@@ -9,7 +9,7 @@ public class PuissanceXXSiecle extends Puissance {
 		int rep = 0;
 		switch(taille){
 			case 1 : 
-				rep = 3;
+				rep = 1;
 				break;
 			case 2 : 
 				rep = 2;

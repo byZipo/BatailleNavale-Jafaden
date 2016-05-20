@@ -59,9 +59,4 @@ public class Joueur implements Serializable{
 	public Type[][] getPositionsAdverse(){
 		return positionsAdverse;
 	}
-	
-	public int getNbToucher(){
-		int rep = 0;
-		return 0;
-	}
 }
