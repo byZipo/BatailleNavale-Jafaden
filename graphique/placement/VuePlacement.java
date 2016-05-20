@@ -16,10 +16,10 @@ import modele.BatailleNavale.Etat;
 public class VuePlacement extends JFrame implements Vue{
 	
 	public VuePlacement() {
-		super("CAD - Bataille Navale");
+		super("Placement des bateaux");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		BatailleNavale.getInstance().addObserver(this);
-		this.setPreferredSize(new Dimension(500, 500));
+		this.setPreferredSize(new Dimension(350, 550));
 		VueJoueurPlacement vueJoueurPlacement = new VueJoueurPlacement();
 		VueCommandePlacement vueCommandePlacement = new VueCommandePlacement();
 		this.setJMenuBar(new MenuBar());

@@ -33,6 +33,7 @@ public class VueJoueurPlacement extends JPanel implements Vue {
 	
 	public VueJoueurPlacement() {
 		BatailleNavale.getInstance().addObserver(this);
+		this.setPreferredSize(new Dimension(300, 300));
 		tabPanel = new PanelPortion[BatailleNavale.TAILLE_PLATEAU][BatailleNavale.TAILLE_PLATEAU];
 		this.setLayout(new GridLayout(BatailleNavale.TAILLE_PLATEAU, BatailleNavale.TAILLE_PLATEAU));
 		for (int i = 0; i < BatailleNavale.TAILLE_PLATEAU; i++) {

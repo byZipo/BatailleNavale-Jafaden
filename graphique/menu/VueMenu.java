@@ -97,13 +97,6 @@ public class VueMenu extends JFrame implements Vue{
 		add(BorderLayout.CENTER, menu);
 		add(BorderLayout.SOUTH, boutonDemarer);
 		
-
-		//add(BorderLayout.SOUTH, boutonDemarer);
-		//add(BorderLayout.NORTH, listeMode);
-		//add(BorderLayout.SOUTH, listeEpoque);
-		//add(listeAlgo);
-		//add(boutonDemarer);
-		
 	    pack() ;
         setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

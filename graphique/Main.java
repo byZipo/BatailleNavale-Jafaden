@@ -32,7 +32,7 @@ public class Main implements Vue{
 		switch(BatailleNavale.getInstance().getEtat()){
 			case GAGNER :
 				JOptionPane.showMessageDialog(vueJeu,
-					    "Vous avez gagner.",
+					    "Vous avez gagné.",
 					    "Bataille Navale",
 					    JOptionPane.PLAIN_MESSAGE);
 				System.exit(0);
