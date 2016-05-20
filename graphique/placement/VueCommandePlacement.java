@@ -1,5 +1,6 @@
 package graphique.placement;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -7,11 +8,15 @@ import java.awt.GridLayout;
 import java.util.Observable;
 
 import graphique.Vue;
+import graphique.menu.VueMenu;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 import controlleur.menu.EcouteurChangementMode;
 import controlleur.placement.EcouteurChangerBateau;
@@ -34,23 +39,62 @@ public class VueCommandePlacement extends JPanel implements Vue {
 	private JButton btRotationHoraire;
 	private JButton btRotationAntiHoraire;
 	private JComboBox listeBateau;
+	protected ImageIcon flecheHaut = new ImageIcon(VueMenu.class.getResource("/img/fleche-haut.png"));
+	protected ImageIcon flecheBas = new ImageIcon(VueMenu.class.getResource("/img/fleche-bas.png"));
+	protected ImageIcon flecheGauche = new ImageIcon(VueMenu.class.getResource("/img/fleche-gauche.png"));
+	protected ImageIcon flecheDroite = new ImageIcon(VueMenu.class.getResource("/img/fleche-droite.png"));
+	protected ImageIcon rotationHoraire = new ImageIcon(VueMenu.class.getResource("/img/rotation-horaire.png"));
+	protected ImageIcon rotationAntiHoraire = new ImageIcon(VueMenu.class.getResource("/img/rotation-antihoraire.png"));
 	
 	public VueCommandePlacement() {
+		Border thickBorder = new LineBorder(Color.BLACK, 3);
 		BatailleNavale.getInstance().addObserver(this);
-		btHaut = new JButton("^");
+		btHaut = new JButton();
 		btHaut.addActionListener(new EcouteurDirection(Direction.H));
-		btBas = new JButton("v");
+		btHaut.setIcon(flecheHaut);
+		btHaut.setFocusable(false);
+		btHaut.setBackground(Color.WHITE);
+		//btHaut.setBorder(thickBorder);
+		
+		btBas = new JButton();
 		btBas.addActionListener(new EcouteurDirection(Direction.B));
-		btDroite = new JButton(">");
+		btBas.setIcon(flecheBas);
+		btBas.setFocusable(false);
+		btBas.setBackground(Color.WHITE);
+		//btBas.setBorder(thickBorder);
+		
+		btDroite = new JButton();
 		btDroite.addActionListener(new EcouteurDirection(Direction.D));
-		btGauche = new JButton("<");
+		btDroite.setIcon(flecheDroite);
+		btDroite.setFocusable(false);
+		btDroite.setBackground(Color.WHITE);
+		//btDroite.setBorder(thickBorder);
+		
+		btGauche = new JButton();
 		btGauche.addActionListener(new EcouteurDirection(Direction.G));
+		btGauche.setIcon(flecheGauche);
+		btGauche.setFocusable(false);
+		btGauche.setBackground(Color.WHITE);
+		//btGauche.setBorder(thickBorder);
+		
 		btValider = new JButton("Ok");
 		btValider.addActionListener(new EcouteurValider());
-		btRotationAntiHoraire = new JButton("<u");
+		btValider.setFocusable(false);
+		btValider.setBackground(Color.WHITE);
+		//btValider.setBorder(thickBorder);
+		
+		btRotationAntiHoraire = new JButton();
 		btRotationAntiHoraire.addActionListener(new EcouteurSens(Sens.ANTIHORAIRE));
-		btRotationHoraire = new JButton("c>");
+		btRotationAntiHoraire.setIcon(rotationAntiHoraire);
+		btRotationAntiHoraire.setFocusable(false);
+		btRotationAntiHoraire.setBackground(Color.WHITE);
+		
+		btRotationHoraire = new JButton();
 		btRotationHoraire.addActionListener(new EcouteurSens(Sens.HORAIRE));
+		btRotationHoraire.setIcon(rotationHoraire);
+		btRotationHoraire.setFocusable(false);
+		btRotationHoraire.setBackground(Color.WHITE);
+		
 		listeBateau = new JComboBox<Bateau>(BatailleNavale.getInstance().getBateauxAPlacerModel());
 		listeBateau.addActionListener(new EcouteurChangerBateau());
 		
