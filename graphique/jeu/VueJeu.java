@@ -28,6 +28,7 @@ public class VueJeu extends JFrame implements Vue{
 	
 	public VueJeu() {
 		super("CAD - Bataille Navale");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.setJMenuBar(new MenuBar());
 		try {

@@ -36,6 +36,7 @@ public class VueMenu extends JFrame implements Vue{
 	
 	public VueMenu(){
 		super("CAD - Bataille Navale");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		BatailleNavale.getInstance().addObserver(this);
 		this.setPreferredSize(new Dimension(500, 570));
 		//this.setLayout(new FlowLayout());

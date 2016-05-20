@@ -17,6 +17,7 @@ public class VuePlacement extends JFrame implements Vue{
 	
 	public VuePlacement() {
 		super("CAD - Bataille Navale");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		BatailleNavale.getInstance().addObserver(this);
 		this.setPreferredSize(new Dimension(500, 500));
 		VueJoueurPlacement vueJoueurPlacement = new VueJoueurPlacement();
