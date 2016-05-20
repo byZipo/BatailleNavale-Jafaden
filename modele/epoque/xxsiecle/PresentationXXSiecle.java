@@ -19,16 +19,16 @@ public class PresentationXXSiecle extends Presentation {
 		String rep = null;
 		switch(taille){
 			case 1 :
-				rep = "Petit";
+				rep = "Zodiac";
 				break;
 			case 2 :
-				rep = "Moins Petit";
+				rep = "Destroyeur";
 				break;
 			case 3 :
-				rep = "Moyen";
+				rep = "Yacht";
 				break;
 			case 4 :
-				rep = "Grand";
+				rep = "Porte avion";
 				break;
 			case 5 :
 				rep = "Enorme";

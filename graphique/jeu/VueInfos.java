@@ -16,13 +16,13 @@ public class VueInfos extends JPanel implements Vue {
 	public VueInfos() {
 		BatailleNavale.getInstance().addObserver(this);
 		this.setPreferredSize(new Dimension(300, 30));
-		dernierCoupOrdi = new JLabel("Dernier Coup : ");
+		dernierCoupOrdi = new JLabel("A vous de jouer");
 		add(dernierCoupOrdi);
 	}
 	
 	@Override
 	public void update(Observable o, Object arg) {
 		if(BatailleNavale.getInstance().getDernierCoupOrdi()!=null)
-			dernierCoupOrdi.setText("Dernier Coup : "+BatailleNavale.getInstance().getDernierCoupOrdi());
+			dernierCoupOrdi.setText("L'ordinateur a tiré en : ("+BatailleNavale.getInstance().getDernierCoupOrdi().getPremier()+","+BatailleNavale.getInstance().getDernierCoupOrdi().getDeuxieme()+").");
 	}
 }

@@ -1,9 +1,11 @@
 package graphique.jeu;
 
 import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -27,7 +29,17 @@ public class VueJeu extends JFrame implements Vue{
 	public static Image IMAGE_FOG;
 	
 	public VueJeu() {
-		super("CAD - Bataille Navale");
+		super("Bataille Navale - Partie en cours");
+		
+		Dimension windowSize = getSize();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Point centerPoint = ge.getCenterPoint();
+        int largeur = 300;
+        int hauteur = 630;
+        int dx = (centerPoint.x - windowSize.width / 2) - 250;
+        int dy = (centerPoint.y - windowSize.height / 2) - 285;    
+        setLocation(dx, dy);
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.setJMenuBar(new MenuBar());
@@ -39,7 +51,7 @@ public class VueJeu extends JFrame implements Vue{
 		
 		
 		BatailleNavale.getInstance().addObserver(this);
-		this.setPreferredSize(new Dimension(300, 630));
+		this.setPreferredSize(new Dimension(largeur, hauteur));
 		VueJeuCacher vueJoueur = new VueJeuCacher();
 		VueJeuVisible vueOrdinateur = new VueJeuVisible();
 		VueInfos vueInfos = new VueInfos();

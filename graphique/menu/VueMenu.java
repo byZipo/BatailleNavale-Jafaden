@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GraphicsEnvironment;
+import java.awt.Point;
 import java.util.Observable;
 
 import javax.swing.BoxLayout;
@@ -37,10 +39,20 @@ public class VueMenu extends JFrame implements Vue{
 	protected ImageIcon vueMenu = new ImageIcon(VueMenu.class.getResource("/img/vue-menu.png"));
 	
 	public VueMenu(){
-		super("CAD - Bataille Navale");
+		super("Battaille navale - Menu");
+		
+		Dimension windowSize = getSize();
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Point centerPoint = ge.getCenterPoint();
+        int largeur = 500;
+        int hauteur = 570;
+        int dx = (centerPoint.x - windowSize.width / 2) - 250;
+        int dy = (centerPoint.y - windowSize.height / 2) - 285;    
+        setLocation(dx, dy);
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		BatailleNavale.getInstance().addObserver(this);
-		this.setPreferredSize(new Dimension(500, 570));
+		this.setPreferredSize(new Dimension(largeur, hauteur));
 		//this.setLayout(new FlowLayout());
 		BorderLayout borderImage = new BorderLayout();
 		this.setLayout(borderImage);

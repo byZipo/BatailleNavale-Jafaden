@@ -14,6 +14,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -129,9 +130,18 @@ public class VueCommandePlacement extends JPanel implements Vue {
 		panelBouton2.add(btRotationAntiHoraire, c);
 		this.add(panelBouton2);
 		
+		JPanel panelBateaux = new JPanel();
+		FlowLayout flowLayoutBateaux = new FlowLayout();
+		panelBateaux.setLayout(flowLayoutBateaux);
+		
+		JLabel jLabelBateaux = new JLabel("Les bateaux : ");
+		panelBateaux.add(jLabelBateaux);
+		
 		JPanel panelBouton3 = new JPanel();
 		panelBouton3.add(listeBateau);
-		this.add(panelBouton3);
+		panelBateaux.add(panelBouton3);
+		
+		this.add(panelBateaux);
 	}
 	
 	@Override
